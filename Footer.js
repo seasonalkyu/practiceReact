@@ -16,3 +16,6 @@ function Footer() {
   };
 
 export default Footer;
+
+
+// import Footer from "/Users/gim-utae/wootae/src/components/Footer.js"

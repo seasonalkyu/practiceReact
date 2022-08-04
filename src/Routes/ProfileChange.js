@@ -2,7 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Layout from "../components/Layout";
-import Footer from "/Users/gim-utae/wootae/src/components/Footer.js"
+//import Footer from "../components/Footer.js"
 
 const Wrapper = styled.div`
   background-color: #fafafa;
@@ -75,7 +75,7 @@ function ProfileChange() {
             <input placeholder="이름" />
           </UserChange>
          </ProfileChangeContainer>
-         <Footer/>
+         {/* <Footer/> */}
       </Wrapper>
     </Layout>
     </div>;
