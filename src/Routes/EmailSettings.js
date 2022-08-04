@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import Layout from "../components/Layout";
 import Footer from "../components/Footer.js"
+import { Link } from "react-router-dom";
+import EmailSettingsContainer from '../components/EmailSettingsContainer';
 
 const Wrapper = styled.div`
   background-color: #fafafa;
@@ -43,6 +45,9 @@ const UserChange= styled.div`
   font-size: 16.5px;
   width: 75%;
   position: relative;
+  border: 1px solid lightgray;
+  height: 800px;
+  line-height: 310%;
   display: right;
   flex-direction: column;
   border: 1px solid lightgray;
@@ -51,16 +56,28 @@ const UserChange= styled.div`
 `;
 
 
-function PasswordChange() {
+
+function EmailSettings() {
     return <div>
       <Layout>
         <Wrapper>
           <ProfileChangeContainer>
             <Option>
-
+                <Link to = {"/Profile"} style={{ textDecoration: 'none', color: 'black' }}>
+                <p> 프로필 편집 </p>
+                </Link>
+                <Link to = {"/PasswordChange"} style={{ textDecoration: 'none', color: 'black' }}>
+                <p> 비밀번호 변경 </p>
+                </Link>
+                <Link to = {"/Profile"} style={{ textDecoration: 'none', color: 'black' }}>
+                <p> 웹 및 앱사이트 </p>
+                </Link>
+                <Link to = {"/EmailSettings"} style={{ textDecoration: 'none', color: 'black' }}>
+                <p> 이메일 알림 </p>
+                </Link>
             </Option>
             <UserChange>
-
+                <EmailSettingsContainer></EmailSettingsContainer>
             </UserChange>
           </ProfileChangeContainer>
           <Footer/>
@@ -71,5 +88,5 @@ function PasswordChange() {
 
 
   
-  export default PasswordChange;
+  export default EmailSettings;
   
