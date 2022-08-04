@@ -63,7 +63,7 @@ function EmailSettings() {
         <Wrapper>
           <ProfileChangeContainer>
             <Option>
-                <Link to = {"/Profile"} style={{ textDecoration: 'none', color: 'black' }}>
+                <Link to = {"/ProfileChange"} style={{ textDecoration: 'none', color: 'black' }}>
                 <p> 프로필 편집 </p>
                 </Link>
                 <Link to = {"/PasswordChange"} style={{ textDecoration: 'none', color: 'black' }}>
