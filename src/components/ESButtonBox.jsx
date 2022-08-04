@@ -11,18 +11,18 @@ const ESButtonBox = (prop) => {
      /* destructuring
         https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
     */
-   
-    const [buttonStatus1, setButtonStatus] = useState(isOn)
 
-    let circle;
+    const [buttonStatus, setButtonStatus] = useState(isOn);
+
     const EnableCircle = <div style={{ paddingRight: "8px" }}><ESEnableCircle /></div>
-    const DisableCirle = <div style={{ paddingRight: "8px" }}><ESDisableCircle /></div>
+    const DisableCircle = <div style={{ paddingRight: "8px" }}><ESDisableCircle /></div>
 
-    const handleButtonStatusChange = (e) => {
-        if(e.target.buttontype === ESButtonStatus.ON) 
-            setButtonStatus(ESButtonStatus.ON)
-        else if(e.target.buttontype === ESButtonStatus.OFF) 
-            setButtonStatus(ESButtonStatus.OFF)
+    const handleButtonToOff = () => {
+            setButtonStatus(ESButtonStatus.OFF);
+    }
+
+    const handleButtonToOn = () => {
+        setButtonStatus(ESButtonStatus.ON);
     }
 
     return ( <_ESButtonBox>
@@ -37,22 +37,22 @@ const ESButtonBox = (prop) => {
         {/* Buttons */}
         <div style={{paddingLeft:"12px"}}>
             <ESRadioButton 
-                onClick={handleButtonStatusChange}
-                buttontype={ESButtonStatus.OFF}>
-                {buttonStatus1 === ESButtonStatus.OFF
+                onClick={handleButtonToOff}
+                data-buttontype={ESButtonStatus.OFF}>
+                {buttonStatus === ESButtonStatus.OFF
                     ? EnableCircle
-                    : DisableCirle
+                    : DisableCircle
                 }
                 <div style={{flexGrow: "1", lineHeight: "25px"}}><span style={{fontSize: "14px"}}>해제</span></div>
             </ESRadioButton>
         </div>
         <div style={{paddingLeft:"12px"}}>
             <ESRadioButton 
-                onClick={handleButtonStatusChange}
-                buttontype={ESButtonStatus.ON}>
-                {buttonStatus1 === ESButtonStatus.OFF
-                    ? DisableCirle
-                    : EnableCircle
+                onClick={handleButtonToOn}
+                data-buttontype={ESButtonStatus.ON}>
+                {buttonStatus === ESButtonStatus.ON
+                    ? EnableCircle
+                    : DisableCircle
                 }
                 <div style={{flexGrow: "1", lineHeight: "25px"}}><span style={{fontSize: "14px"}}>설정</span></div>
                 </ESRadioButton>
