@@ -44,11 +44,32 @@ function ProfileChange() {
     const [userName, setUserName] = useState("박찬규");
     const [userId, setUserId] = useState("chankyu012");
     const [userWebSite, setUserWebSite] = useState("웹사이트");
-    const [userDesc, setUserDesc] = useState("");
+    const [userDesc, setUserDesc] = useState("소개");
     const [userEmail, setUserEmail] = useState("ppp@naver.com");
     const [userPhoneNumber, setUserPhoneNumber] = useState("+82 10-0101-2323");
-    const [userSex, setUserSec] = useState("밝히고 싶지 않음");
+    const [userSex, setUserSex] = useState("밝히고 싶지 않음");
     const [userRecommend, setUserRecommend] = useState(true);
+
+    const handleNameChange = (e) => {
+        setUserName(e.target.value);
+    };
+
+    const handleIdChange = (e) => {
+        setUserId(e.target.value);
+    };
+    const handleWebSiteChange = (e) => {
+        setUserWebSite(e.target.value);
+    };
+    const handleDescChange = (e) => {
+        setUserDesc(e.target.value);
+    };
+    const handleEmailChange = (e) => {
+        setUserEmail(e.target.value);
+    };
+    const handlePhoneNumberChange = (e) => {
+        setUserPhoneNumber(e.target.value);
+    };
+
 
 
 
@@ -83,45 +104,82 @@ function ProfileChange() {
                         {/* 이름 */}
                         <UserChangeSubBox style={{height: "120px"}}>
                             <ChangeClass><label style={{position: "absolute", top: "-15px", right: "25px"}}>이름</label></ChangeClass>
-                            <ChangeInputBox><ChangeInput /></ChangeInputBox>
+                            <ChangeInputBox>
+                                <ChangeInput value={userName} onChange={handleNameChange}/>
+                                <div style={{height:"50%", position:"absolute", top:"40px"}}>
+                                    <ChangeDesc style={{height: "48px", lineHeight:"120%"}}>사람들이 이름, 별명 또는 비즈니스 이름 등 회원님의 알려진 이름을 사용하여 회원님의 계정을 찾을 수 있도록 도와주세요.</ChangeDesc>
+                                    <ChangeDesc style={{height:"16px", lineHeight:"120%"}}>이름은 14일 안에 두 번만 변경할 수 있습니다.</ChangeDesc>
+                                </div>
+                            </ChangeInputBox>
                         </UserChangeSubBox>
                         {/* 사용자 아이디 */}
                         <UserChangeSubBox style={{height: "104px"}}>
                             <ChangeClass><label style={{position: "absolute", top: "-15px", right: "25px"}}>사용자 이름</label></ChangeClass>
-                            <ChangeInputBox><ChangeInput /></ChangeInputBox>
+                            <ChangeInputBox>
+                                <ChangeInput value={userId} onChange={handleIdChange}/>
+                                <div style={{height:"50%", position:"absolute", top:"40px"}}>
+                                <ChangeDesc style={{height:"48px", lineHeight:"120%"}}>대부분의 경우 이후 14일 동안 사용자 이름을 다시 seasonal_chankyu(으)로 변경할 수 있습니다. 더 알아보기</ChangeDesc>
+                                </div>
+                            </ChangeInputBox>
                         </UserChangeSubBox>
                         {/* 웹사이트 */}
                         <UserChangeSubBox style={{height: "25px"}}>
                             <ChangeClass><label style={{position: "absolute", top: "-15px", right: "25px"}}>웹사이트</label></ChangeClass>
-                            <ChangeInputBox><ChangeInput /></ChangeInputBox>
+                            <ChangeInputBox><ChangeInput 
+                                value={userWebSite}
+                                onChange={handleWebSiteChange}/>
+                            </ChangeInputBox>
                         </UserChangeSubBox>
                         {/* 소개 */}
                         <UserChangeSubBox style={{height: "52px"}}>
                             <ChangeClass><label style={{position: "absolute", top: "-15px", right: "25px"}}>소개</label></ChangeClass>
-                            <ChangeInputBox><ChangeInput style={{height:"50px"}}/></ChangeInputBox>
+                            <ChangeInputBox><ChangeInput 
+                                value={userDesc}
+                                style={{height:"50px"}}
+                                onChange={handleDescChange}/>
+                            </ChangeInputBox>
                         </UserChangeSubBox>
 
-                        <UserChangeSubBox style={{height: "74px"}}></UserChangeSubBox>
+                        <UserChangeSubBox style={{height: "74px"}}>
+                            <ChangeClass></ChangeClass>
+                            <ChangeInputBox>
+                                <h2 style={{lineHeight:"120%",height:"18px",marginTop:"10px",fontSize: "14px",fontWeight:"700",color: "rgba(0, 0, 0, 0.45)"}}>개인정보</h2>
+                                <ChangeDesc style={{height: "48px",lineHeight:"120%"}}>비즈니스나 반려동물 등에 사용된 계정인 경우에도 회원님의 개인정보를 입력하세요. 공개 프로필에는 포함되지 않습니다.</ChangeDesc>
+                            </ChangeInputBox>
+                        </UserChangeSubBox>
                         {/* 이메일 */}
                         <UserChangeSubBox style={{height: "25px"}}>
                             <ChangeClass><label style={{position: "absolute", top: "-15px", right: "25px"}}>이메일</label></ChangeClass>
-                            <ChangeInputBox><ChangeInput /></ChangeInputBox>
+                            <ChangeInputBox><ChangeInput 
+                                value={userEmail}
+                                onChange={handleEmailChange}/>
+                            </ChangeInputBox>
                         </UserChangeSubBox>
                         {/* 전화번호 */}
                         <UserChangeSubBox style={{height: "25px"}}>
                             <ChangeClass><label style={{position: "absolute", top: "-15px", right: "25px"}}>전화번호</label></ChangeClass>
-                            <ChangeInputBox><ChangeInput /></ChangeInputBox>
+                            <ChangeInputBox><ChangeInput 
+                                value={userPhoneNumber}
+                                onChange={handlePhoneNumberChange} /></ChangeInputBox>
                         </UserChangeSubBox>
                         {/* 성별 */}
                         <UserChangeSubBox style={{height: "44px", marginBottom: "0"}}>
                             <ChangeClass><label style={{position: "absolute", top: "-15px", right: "25px"}}>성별</label></ChangeClass>
-                            <ChangeInputBox><ChangeInput /></ChangeInputBox>
+                            <ChangeInputBox><ChangeInput 
+                                value={userSex}/></ChangeInputBox>
                         </UserChangeSubBox>
                         
                         <UserChangeSubBox style={{height: "54px"}}>
                             <ChangeClass style={{paddingLeft:"2px"}}><label style={{position: "absolute", top: "-15px", right: "25px"}}>비슷한 계정 추천</label></ChangeClass>
+                            <div style={{display:"flex", flexGrow:"1"}}>
+                                <div>ㅁ</div>
+                                <div style={{width:"190px",fontSize:"14px",fontWeight:"600",lineHeight:"120%"}}>팔로우할 만한 비슷한 계정을 추천할 때 회원님의 계정을 포함합니다.[?]</div>
+                            </div>
                         </UserChangeSubBox>
-                        <UserChangeSubBox style={{height: "40px"}}></UserChangeSubBox>
+                        <UserChangeSubBox style={{height: "40px"}}>
+                            <ChangeClass></ChangeClass>
+                            <button>제출</button>
+                        </UserChangeSubBox>
                     </UserChangeBox>
                 </UserChangeContainer>
             </UserChange>
@@ -219,7 +277,7 @@ const UserChangeSubBox = styled.div`
 
     display: flex;
 
-    border: 1px solid #000;
+    //border: 1px solid #000;
 `
 
 const ChangeClass = styled.div`
@@ -249,7 +307,20 @@ const ChangeInput = styled.input`
     height: 28px;
     padding: 0 10px;
 
+    
     position: absolute;
     top: -3px;
     
 `
+
+const ChangeDesc = styled.div`
+    width: 280px;
+
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.4);
+    
+    //border: 1px solid #000;
+`
+/* 줄간격 조절하기
+https://tagilog.tistory.com/191
+*/
