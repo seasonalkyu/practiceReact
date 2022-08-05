@@ -71,8 +71,6 @@ function ProfileChange() {
     };
 
 
-
-
     return <div>
     <Layout>
       <Wrapper>
@@ -118,7 +116,7 @@ function ProfileChange() {
                             <ChangeInputBox>
                                 <ChangeInput value={userId} onChange={handleIdChange}/>
                                 <div style={{height:"50%", position:"absolute", top:"40px"}}>
-                                <ChangeDesc style={{height:"48px", lineHeight:"120%"}}>대부분의 경우 이후 14일 동안 사용자 이름을 다시 seasonal_chankyu(으)로 변경할 수 있습니다. 더 알아보기</ChangeDesc>
+                                <ChangeDesc style={{height:"48px", lineHeight:"120%"}}>대부분의 경우 이후 14일 동안 사용자 이름을 다시 {userId}(으)로 변경할 수 있습니다. 더 알아보기</ChangeDesc>
                                 </div>
                             </ChangeInputBox>
                         </UserChangeSubBox>
