@@ -86,6 +86,11 @@ function Profile() {
                                 <div><FeedImg/></div>
                                 <div><FeedImg/></div>
                             </FeedBox>
+                            <FeedBox>
+                                <div><FeedImg/></div>
+                                <div><FeedImg/></div>
+                                
+                            </FeedBox>
                             
                         </PostBox>) )
                     || (

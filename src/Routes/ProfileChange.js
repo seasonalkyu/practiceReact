@@ -82,7 +82,7 @@ function ProfileChange() {
             <Link to = {"/PasswordChange"} style={{ textDecoration: 'none', color: 'black' }}>
               <p> 비밀번호 변경 </p>
             </Link>
-            <Link to = {"/Profile"} style={{ textDecoration: 'none', color: 'black' }}>
+            <Link to = {"/Website"} style={{ textDecoration: 'none', color: 'black' }}>
               <p> 웹 및 앱사이트 </p>
             </Link>
             <Link to = {"/EmailSettings"} style={{ textDecoration: 'none', color: 'black' }}>

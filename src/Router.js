@@ -5,6 +5,7 @@ import Profile from "./Routes/Profile";
 import ProfileChange from "./Routes/ProfileChange";
 import PasswordChange from "./Routes/PasswordChange"
 import EmailSettings from "./Routes/EmailSettings";
+import Website from "./Routes/Website";
 
 function Router() {
   return (
@@ -16,6 +17,7 @@ function Router() {
         <Route path="/profileChange" element={<ProfileChange />}></Route>
         <Route path="PasswordChange" element={<PasswordChange />}></Route>
         <Route path="/EmailSettings" element={<EmailSettings />}></Route>
+        <Route path="Website" element={<Website />}></Route>
       </Routes>
     </BrowserRouter>
   );
