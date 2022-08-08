@@ -8,14 +8,8 @@ function Website() {
     const [tabStatus, setTabStatus] = useState("active");
 
     const handleTabClick = (e) => {
-        if(e.target.textContent === "활성")
-            setTabStatus("active");
-        else if(e.target.textContent === "만료됨")
-            setTabStatus("expired");
-        else if(e.target.textContent === "삭제됨")
-            setTabStatus("deleted");
+
     }
-    const isTrue = true;
     return <div>
       <Layout>
         <Wrapper>
@@ -45,36 +39,17 @@ function Website() {
             </Option>
             <UserChange>
                 <div>
-                    <UserChangeTitleBox><h1>{ isTrue && "앱 및 웹사이트"}</h1></UserChangeTitleBox>
+                    <UserChangeTitleBox><h1>앱 및 웹사이트</h1></UserChangeTitleBox>
                     <UserChangeContentBox>
                         <UserChangeContentTab status="true">
-                            <div 
-                                onClick={handleTabClick}
-                                status={tabStatus === "active"}
-                                > <span>활성</span>
-                            </div>
-                            <div onClick={handleTabClick}><span>만료됨</span></div>
-                            <div onClick={handleTabClick}><span>삭제됨</span></div>
+                            <div
+                                status={tabStatus}
+                                onClick={handleTabClick}><span>활성</span></div>
+                            <div><span>만료됨</span></div>
+                            <div><span>삭제됨</span></div>
                         </UserChangeContentTab>
-                        {
-                            ((tabStatus === "active")
-                            && <>
-                                <div>
-                                    회원님의 Instagram 계정에 연결한 앱과 웹사이트입니다. 이 앱과 웹사이트는 회원님의 공유하기로 선택한 비공개 정보에 액세스할 수 있습니다.
-                                </div>
-                                <div>Instagram 계정에 액세스하도록 허용한 앱이 없습니다.</div>
-                            </>)
-                            || ((tabStatus === "expired")
-                                && <>
-                                <div>회원님이 Instagram 계정에 연결했지만 최근 90일 동안 사용하지 않은 앱과 웹사이트입니다. 이 앱과 웹사이트는 회원님의 비공개 정보에 더 이상 액세스할 수 없지만 활성 상태일 때 회원님이 공유한 정보는 계속 보유할 수 있습니다. '비공개' 정보는 회원님이 Instagram 계정으로 로그인할 때 공유하도록 선택한 경우에만 앱에서 액세스할 수 있는 정보(예: 이메일 주소)를 의미합니다.</div>
-                                <div>Instagram 계정에 대한 액세스 권한을 보유한 앱 중 만료된 앱이 없습니다.</div>
-                                </>)
-                            || ((tabStatus === "deleted")
-                                && <>
-                                <div>회원님의 Instagram 계정에 더 이상 연결되어 있지 않은 앱과 웹사이트입니다. 이 앱과 웹사이트는 회원님의 비공개 정보에 더 이상 액세스할 수 없지만 활성 상태일 때 회원님이 공유한 정보는 계속 보유할 수 있습니다. '비공개' 정보는 회원님이 Instagram 계정으로 로그인할 때 공유하도록 선택한 경우에만 앱에서 액세스할 수 있는 정보(예: 이메일 주소)를 의미합니다. 앱에 회원님의 정보 삭제를 요청할 수 있습니다. 정보 삭제를 요청하려면 해당 앱의 개인정보처리방침에 명시된 자세한 내용과 연락처 정보를 검토하세요. 앱에 연락하는 경우 사용자 ID가 필요할 수 있습니다.</div>
-                                <div>Instagram 계정에 대한 액세스 권한을 보유한 앱 중 삭제된 앱이 없습니다.</div>
-                                </>)
-                        }
+                        <div>회원님의 Instagram 계정에 연결한 앱과 웹사이트입니다. 이 앱과 웹사이트는 회원님의 공유하기로 선택한 비공개 정보에 액세스할 수 있습니다.</div>
+                        <div>Instagram 계정에 액세스하도록 허용한 앱이 없습니다.</div>
                     </UserChangeContentBox>
                 </div>
             </UserChange>
@@ -172,24 +147,25 @@ const UserChangeContentBox= styled.div`
 
     //border: 1px solid #000;
 
-    line-height: 150%;
     &>div {
         :last-child {
             color: rgba(var(--f52,142,142,142),1);
-            margin-top: 20px;
     }
 
 `
 
-const tabSelected = css`
-    border-bottom: 1px solid #000;
+const contentTabOn = css`
+    color: #000;
 `
-const tabNotSelected = css`
-    opacity: 0.5;
+
+const contentTabOff = css`
+
 `
 
 const UserChangeContentTab= styled.div`
     display:flex;
+
+    ${props => props.status && contentTabOn}
 
     &>div {
         flex: 1;
@@ -201,16 +177,8 @@ const UserChangeContentTab= styled.div`
         line-height: 16px;
 
         cursor: pointer;
-        :nth-child(1) {
-            ${props => props.status && tabNotSelected}
-            ${props => props.status && tabNotSelected}
-        }
-        :nth-child(2) {
-            ${props => props.status && tabSelected}
-        }
-        :nth-child(3) {
-            ${props => props.status && tabSelected}
-        }
+
+        border-bottom: 1px solid #000;
     }
 
     &>div>span {
