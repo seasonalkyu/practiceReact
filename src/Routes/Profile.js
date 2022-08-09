@@ -204,32 +204,27 @@ const SelectionBox = styled.div`
     display: flex;
     justify-content: center;
     border-top: 1.2px solid rgba(0, 0, 0, 0.2);
-    & div {
+    &>div {
         width: 57px;
         height: 52px;
     
         margin-right: 60px;
-        // &:not(:last-of-type) {
         &:last-of-type {
             margin-right: 0px;
         }
         display: flex;
         align-items: center;
         cursor: pointer;
-        &:nth-child(1) {
+        :nth-child(1) {
             ${({ status }) => status === "posts" } 
-            ${({ status }) => status === SelectionStatus.POSTS}
         }
         
-        &:nth-child(2) {
+        :nth-child(2) {
             ${({ status }) => status === SelectionStatus.SAVED}
-            ${({ status }) => status !== SelectionStatus.SAVED}
         }
         
-        &:nth-child(3) {
+        :nth-child(3) {
             ${({ status }) => status === SelectionStatus.TAGGED}
-            ${({ status }) => status !== SelectionStatus.TAGGED}
-            
         }
     }
 `
