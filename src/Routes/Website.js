@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import styled, {css} from "styled-components";
+import styled from "styled-components";
 import Layout from "../components/Layout";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
@@ -8,7 +8,13 @@ function Website() {
     const [tabStatus, setTabStatus] = useState("active");
 
     const handleTabClick = (e) => {
-
+  // pageSelection을 posts로 바꾼다
+  if(e.target.textContent === "활성")
+  setTabStatus("active");
+else if(e.target.textContent === "만료됨")
+  setTabStatus("expired");
+else if(e.target.textContent === "삭제됨")
+  setTabStatus("deleted");
     }
     return <div>
       <Layout>
@@ -41,15 +47,36 @@ function Website() {
                 <div>
                     <UserChangeTitleBox><h1>앱 및 웹사이트</h1></UserChangeTitleBox>
                     <UserChangeContentBox>
-                        <UserChangeContentTab status="true">
-                            <div
-                                status={tabStatus}
-                                onClick={handleTabClick}><span>활성</span></div>
-                            <div><span>만료됨</span></div>
-                            <div><span>삭제됨</span></div>
-                        </UserChangeContentTab>
-                        <div>회원님의 Instagram 계정에 연결한 앱과 웹사이트입니다. 이 앱과 웹사이트는 회원님의 공유하기로 선택한 비공개 정보에 액세스할 수 있습니다.</div>
-                        <div>Instagram 계정에 액세스하도록 허용한 앱이 없습니다.</div>
+                        <UserChangeContentTab status={tabStatus}>
+                          <div
+                            status={tabStatus}
+                            onClick={handleTabClick}><span>활성</span></div>
+                          <div status={tabStatus}
+                            onClick={handleTabClick}><span>만료됨</span></div>
+                           <div status={tabStatus}
+                            onClick={handleTabClick}><span>삭제됨</span></div>
+                        
+                      </UserChangeContentTab> 
+                      {
+                          ((tabStatus === "active")
+                          && ( <>
+                            <div>
+                              회원님의 Instagram 계정에 연결한 앱과 웹사이트입니다. 이 앱과 웹사이트는 회원님의 공유하기로 선택한 비공개 정보에 액세스할 수 있습니다.
+                            </div>
+                            <div>Instagram 계정에 액세스하도록 허용한 앱이 없습니다.</div>
+                          </>))
+                          || ( 
+                        (tabStatus === "expired")
+                        && <>
+                        <div>회원님이 Instagram 계정에 연결했지만 최근 90일 동안 사용하지 않은 앱과 웹사이트입니다. 이 앱과 웹사이트는 회원님의 비공개 정보에 더 이상 액세스할 수 없지만 활성 상태일 때 회원님이 공유한 정보는 계속 보유할 수 있습니다. '비공개' 정보는 회원님이 Instagram 계정으로 로그인할 때 공유하도록 선택한 경우에만 앱에서 액세스할 수 있는 정보(예: 이메일 주소)를 의미합니다.</div>
+                        <div>Instagram 계정에 대한 액세스 권한을 보유한 앱 중 만료된 앱이 없습니다.</div>
+                        </>)
+                        || (
+                        (tabStatus === "deleted")
+                        && <>
+                        <div>회원님의 Instagram 계정에 더 이상 연결되어 있지 않은 앱과 웹사이트입니다. 이 앱과 웹사이트는 회원님의 비공개 정보에 더 이상 액세스할 수 없지만 활성 상태일 때 회원님이 공유한 정보는 계속 보유할 수 있습니다. '비공개' 정보는 회원님이 Instagram 계정으로 로그인할 때 공유하도록 선택한 경우에만 앱에서 액세스할 수 있는 정보(예: 이메일 주소)를 의미합니다. 앱에 회원님의 정보 삭제를 요청할 수 있습니다. 정보 삭제를 요청하려면 해당 앱의 개인정보처리방침에 명시된 자세한 내용과 연락처 정보를 검토하세요. 앱에 연락하는 경우 사용자 ID가 필요할 수 있습니다.</div>
+                        <div>Instagram 계정에 대한 액세스 권한을 보유한 앱 중 삭제된 앱이 없습니다.</div>
+                        </>)}
                     </UserChangeContentBox>
                 </div>
             </UserChange>
@@ -146,26 +173,19 @@ const UserChangeContentBox= styled.div`
     padding: 23px 24px 35px 25px;
 
     //border: 1px solid #000;
-
+    line-height: 150%;
     &>div {
+      margin-top: 20px;
         :last-child {
             color: rgba(var(--f52,142,142,142),1);
     }
 
 `
 
-const contentTabOn = css`
-    color: #000;
-`
-
-const contentTabOff = css`
-
-`
 
 const UserChangeContentTab= styled.div`
     display:flex;
 
-    ${props => props.status && contentTabOn}
 
     &>div {
         flex: 1;
@@ -178,7 +198,7 @@ const UserChangeContentTab= styled.div`
 
         cursor: pointer;
 
-        border-bottom: 1px solid #000;
+        border-bottom: 1px solid rgba(var(--f52,142,142,142),1);
     }
 
     &>div>span {
